@@ -9,6 +9,41 @@ int search(int A[], n, int key)
   }
   return -1;
 }
+classs Shape
+{
+protected:
+  float length;
+  float breadth;
+public:
+  Shape(float x, float y) {
+    length = x;
+    breadth = y;
+  }
+  ~Shape();
+  virtual float area() = 0;
+  virtual float perimeter() = 0;
+  virtual float diagonal() = 0;
+}  
+  
+class Rectangle : public Shape
+{
+public:
+  Rectangle(float x, float y) : Shape(x, y)
+  {
+  }
+  ~Rectangle();
+  float area() { return length * breadth;}
+  float perimeter(){ return 2 * (length + breadth); }
+  float diagonal() { return sqrt(length * length + breadth * breadth);}
+};
+class Triangle : public Shape
+{
+public:
+  Triangle(float x, float y) : Shape(x, y)
+  {}
+  ~Triangle();
+  float area() { return length * breadth / 2; }
+};
 
 int main()
 {
@@ -20,5 +55,12 @@ int main()
   if ( index > 0 ) {
     cout << "Element is found at the index " << index << endl;
   }
+  Rectange r1, r2;
+  r1.length = 10;
+  r1.breadth = 5;
+  cout << r1.area() << endl;
+  r2.length = 5;
+  r2.breadth = 10;
+  cout << r2.perimeter << endl;
   return 0;
 }
