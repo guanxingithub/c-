@@ -1,0 +1,76 @@
+#include<iostream>
+
+using namespace std;
+
+class Rectangle
+{
+protected:
+  int length;
+  int breadth;
+public:
+  Rectangle()
+  {
+    length = 1;
+    breadth = 1;
+  }
+  Rectangle(int x, int y) 
+  {
+    length = x;
+    breadth = y;
+  }
+  Rectangle(Rectangle &r) 
+  {
+    length = r.length;
+    breadth = r.breadth;
+  }
+  void setLength(int x) {
+  {
+    length = x;
+  }
+  void setBreadth(int y) {
+    breadth = y;
+  }
+  int area() { return length * breadth;}
+  int perimeter() { return 2 * ( length + breadth); }
+  friend ostream & operator<< (ostream & os, Rectangle & r) ;
+};
+
+class Cuboid : public Rectangle
+{
+private:
+  int height;
+public:
+  Cuboid(): Rectangle() 
+  {
+    height =1 ;
+  }
+  Cuboid(int x=1,int y=1, int z=1 ) : Rectangle(x, y)
+  {
+    height =z;
+  }
+  Cuboid(const Cuboid & c) 
+  {
+    this->length = c.length;
+    this->breadth = c.breadth;
+    this->height = c.height;
+  }
+  void setHeight(int h) {
+    height  = h;
+  }
+  int getHeight() {
+    return height;
+  }
+  friend ostream &operator << (ostream &os, Cuboid &c);
+};
+
+ostream &operator <<(ostream &os, Cuboid &c) {
+  os << "Length " << r.length << " Breadth " << r.breadth << " Height " << r.height << endl;
+  return os;
+}
+
+ostream & operator<<(ostream &os, Rectangle &r)
+{
+  os << "Length " << r.length << " Breadth " << r.breadth << endl;
+  return os;
+}
+
