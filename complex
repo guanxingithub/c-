@@ -25,12 +25,21 @@ public:
      result.imag = imag + c.imag;
      return result;
    }
-   friend ostream &operator<<(ostream&os, Complex &C) 
-     os <<< "( " << C.real << " + " << C.imag << "i)"<<  endl;
-     return os;
-   }
+   friend ostream &operator<<(ostream&os, Complex &C) ;
+   friend Complex operator+(const Complex &c1, const Complex &c2) ;
+}
+Complex operator+(const Complex &c1, const Complex &c2) 
+{
+  Complex result;
+  result.real = c1.real + c2.real;
+  result.imag = c1.imag + c2.imag;
+  return result;
 }
 
+ostream &operator<<(ostream&os, Complex &C)
+  os << "( " << C.real << " + " << C.imag << "i ) " << endl;
+  return os;
+}
 int main() {
   Complex C1(3,2);
   Complex C2(2,3);
