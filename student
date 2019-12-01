@@ -1,0 +1,50 @@
+#include <iostream>
+
+using namespace std;
+
+class Student
+{
+private:
+  int roll;
+  string name;
+  int mathMasks;
+  int phyMasks;
+  int chemMasks;
+public:
+  Student(int r, string name, int m, int p, int c) {
+    roll = r;
+    this->name = name;
+    mathMasks = m;
+    phyMasks = p;
+    chemMasks = c;
+  }
+  int total() {
+    return mathMasks + phyMasks + chemMasks;
+  }
+  char grade() {
+    float average = total()/3;
+    if ( average > 60 ) return 'A';
+    else if ( average > 40 ) return 'B';
+    else return 'C';
+  }
+  ~Student(){};
+};
+
+void main() {
+  int roll;
+  string name;
+  int m, p, c;
+  cout << "Enter the roll number " 
+  cin >> roll;
+  cout << "Enter the student name "
+  cin >> name;
+  cout << "Enter the math score "
+  cin >> m;
+  cout << "Enter the physics score "
+  cin >> p;
+  cout << "Enther the chemics score "
+  cin >> c;
+  Student s(roll, name, m, p, c);
+  cout << "The total score of this student is " << s.total() << endl;
+  cout << "The grade of this student is " << s.grade() << endl;
+}
