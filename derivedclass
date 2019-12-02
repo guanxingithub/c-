@@ -1,0 +1,42 @@
+#include <iostream>
+
+using namespace std;
+
+class Base
+{
+public:
+  Base()
+  { 
+    cout << "Base class" << endl;
+  }
+  Base(int x ) 
+  {
+    cout << "Base class " << x << endl;
+  }
+};
+
+class Derived : public Base
+{
+public:
+  Derived() 
+  {
+    cout << "Derived class" << endl;
+  }
+  Derived(int a)
+  {
+    cout << "Derived class" << a << endl;
+  }
+  Derived(int x, int a ) : Base(x)
+  {
+    cout << "Derived class " << a << endl;
+  }
+};
+
+int main()
+{
+  Derived d;
+  Derived e(4);
+  Derived f(4, 5);
+  return 0;
+}
+  
